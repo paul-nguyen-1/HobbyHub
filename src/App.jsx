@@ -1,15 +1,25 @@
-function App() {
-  //Routes
-  let routes = [
-    {
-      path:"/",
-      routes: ""
-    }
-  ]
-  return <div className="App">
+import { useRoutes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
-    
-  </div>;
+function App() {
+  //Layout of Routes for Application
+  let routes = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+  ])
+
+  return (
+    <div className="App">
+    <>
+
+      <Navbar />
+    </>
+      {routes}
+    </div>
+  );
 }
 
 export default App;

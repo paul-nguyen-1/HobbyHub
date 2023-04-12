@@ -1,0 +1,13 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+    width: 100vw;
+    background-color: rgba(244, 154, 37, 0.214)
+}
+
+.navigation button{
+    margin: 0px 5px;
+    background-color: white;
+}

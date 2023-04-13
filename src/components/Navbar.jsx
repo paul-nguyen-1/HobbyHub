@@ -1,14 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
   return (
     <div className="navbar">
-      <h1>MealHub</h1>
+      <Link to="/" style={{color:"black"}}>
+        <h1>MealHub</h1>
+      </Link>
       <input></input>
       <div className="navigation">
-        <button>Home</button>
-        <button>Create</button>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
+        <Link to="/createPost">
+          <button>Create</button>
+        </Link>
       </div>
     </div>
   );

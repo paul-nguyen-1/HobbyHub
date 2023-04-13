@@ -33,3 +33,16 @@
 .read-the-docs {
   color: #888;
 }
+
+.home {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px 100px;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: row;
+
+}

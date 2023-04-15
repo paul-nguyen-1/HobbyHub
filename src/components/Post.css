@@ -1,8 +1,6 @@
 .post {
-  height: 100px;
-  width: 90%;
-  background-color: red;
-  align-self: center;
-  margin-top: 10px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 15px;
   border-radius: 5px;
+  align-content: center;
 }

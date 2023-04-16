@@ -27,13 +27,12 @@ function Home() {
         {posts && posts.length > 0 ? (
           posts.map((post, index) => (
             <Post
-              key={index}
               created={post.created_at}
               id={post.id}
               title={post.title}
               description={post.description}
               image={post.image}
-              comment={post.comment}
+              upvote={post.upvote}
             />
           ))
         ) : (

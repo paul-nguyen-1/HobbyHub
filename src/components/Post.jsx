@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../client";
 import "./Post.css";
 
-function Post({ id, created, title, image }) {
+function Post({ id, created, title, image, upvote }) {
+  const [count, setCount] = useState(upvote);
+
+  //Update count on click
+  const updateCount = async () => {
+    await supabase
+      .from("Meals")
+      .update({ upvote: count + 1 })
+      .eq("id", id);
+    setCount((count) => count + 1);
+  };
+
   // Get the current date and convert created time to get date
   const currentDate = new Date();
   const createdDate = new Date(created);
@@ -31,6 +43,7 @@ function Post({ id, created, title, image }) {
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
         <img src={image} alt={image} />
+        <p onClick={updateCount}>Upvote {upvote}</p>
       </div>
     </Link>
   );

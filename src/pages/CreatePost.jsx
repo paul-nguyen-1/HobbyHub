@@ -7,7 +7,7 @@ function CreatePost() {
     title: "",
     description: "",
     image: "",
-    upvote: "",
+    upvote: 0,
 
   });
 
@@ -36,8 +36,8 @@ function CreatePost() {
     setInput({
       title: "",
       description: "",
-      upvote: "",
       image: "",
+      upvote: 0,
     });
   };
   return (

@@ -5,28 +5,52 @@ import Post from "../components/Post";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const [newest, setNewest] = useState(null);
+  const [popular, setPopular] = useState(null);
+  const [eventChoice, setEventChoice] = useState(null);
+
+  const newOrder = newest ? { ascending: false } : { ascending: true };
+  const newPopular = popular ? { ascending: false } : { ascending: true };
+  const orderChoice = eventChoice ? newOrder : newPopular;
+  const tableChoice = eventChoice ? "created_at" : "upvote";
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchPostCreated = async () => {
       const { data } = await supabase
         .from("Meals")
         .select()
-        .order("created_at", { ascending: true });
+        .order(tableChoice, orderChoice);
       setPosts(data);
     };
-    fetchPost();
-  }, []);
+    fetchPostCreated();
+  }, [newest, popular]);
+
+  const handleNewest = () => {
+    setNewest(!newest);
+    setEventChoice(true);
+  };
+
+  const handlePopularity = () => {
+    setPopular(!popular);
+    setEventChoice(false);
+  };
+
   return (
     <div className="home">
       <div className="homeContainer">
         <p>Order by:</p>
-        <button style={{ color: "white" }}>Newest</button>
-        <button style={{ color: "white" }}>Most Popular</button>
+        <button style={{ color: "white" }} onClick={handleNewest}>
+          {newest ? "Latest" : "Oldest"}
+        </button>
+        <button style={{ color: "white" }} onClick={handlePopularity}>
+          {popular ? "Most Popular" : "Least Popular"}
+        </button>
       </div>
       <div className="readPosts">
         {posts && posts.length > 0 ? (
           posts.map((post, index) => (
             <Post
+              key={index}
               created={post.created_at}
               id={post.id}
               title={post.title}

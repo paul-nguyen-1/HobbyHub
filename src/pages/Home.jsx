@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
 import Post from "../components/Post";
 
-function Home() {
+function Home({ test, search, setSearch }) {
   const [posts, setPosts] = useState([]);
   const [newest, setNewest] = useState(null);
   const [popular, setPopular] = useState(null);
@@ -19,11 +19,12 @@ function Home() {
       const { data } = await supabase
         .from("Meals")
         .select()
-        .order(tableChoice, orderChoice);
+        .order(tableChoice, orderChoice)
+        .ilike("title", `%${search}%`);
       setPosts(data);
     };
     fetchPostCreated();
-  }, [newest, popular]);
+  }, [eventChoice, newest, popular, search]);
 
   const handleNewest = () => {
     setNewest(!newest);

@@ -8,7 +8,7 @@ function CreatePost() {
     description: "",
     image: "",
     upvote: 0,
-
+    comments: [],
   });
 
   const handleChange = (e) => {
@@ -28,6 +28,7 @@ function CreatePost() {
         description: input.description,
         image: input.image,
         upvote: input.upvote,
+        comments: input.comments,
       })
       .select();
 
@@ -38,6 +39,7 @@ function CreatePost() {
       description: "",
       image: "",
       upvote: 0,
+      comments: [],
     });
   };
   return (
@@ -68,7 +70,7 @@ function CreatePost() {
           type="submit"
           value="Submit"
           onClick={createPost}
-          style={{ width: "75px", backgroundColor:"red" }}
+          style={{ width: "75px", backgroundColor: "red" }}
         />
       </form>
     </div>

@@ -2,6 +2,7 @@ import "../App.css";
 import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
 import Post from "../components/Post";
+import gif from '../assets/loading.gif'
 
 function Home({ search }) {
   const [posts, setPosts] = useState([]);
@@ -61,7 +62,10 @@ function Home({ search }) {
             />
           ))
         ) : (
-          <h2>{"Nothing to see yet 😞"}</h2>
+          <img
+            src={gif}
+            style={{ height: "150px", width: "150px", padding: "50px" }}
+          />
         )}
       </div>
     </div>

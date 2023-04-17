@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PostCard.css";
+import { useParams } from "react-router-dom";
+import { supabase } from "../client";
 
-function PostCard({ created, title, image, upvote }) {
+function PostCard({ created, title, image, upvote, comments }) {
+  const { id } = useParams();
   const [comment, setComment] = useState("");
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       submitComment();
+      comments.push(comment);
     }
-  }
+  };
 
   const submitComment = () => {
+    // console.log(`Submitting comment: ${comment}`);
+    setComment("");
+  };
 
-    console.log(`Submitting comment: ${comment}`);
-    // Clear the comment input
-    setComment('');
-  }
+  useEffect(() => {
+    const updateComments = async () => {
+      await supabase
+        .from("Meals")
+        .update({
+          comments: [...comments, comment],
+        })
+        .eq("id", id);
+    };
+    updateComments();
+  }, [comment]);
 
   // Get the current date and convert created time to get date
   const currentDate = new Date();
@@ -48,6 +62,9 @@ function PostCard({ created, title, image, upvote }) {
         <p>{upvote} upvotes</p>
       </div>
       <div className="comment">
+        {comments.map((comment, index) => (
+          <div key={index}>{comment}</div>
+        ))}
         <p>{comment}</p>
         <input
           placeholder="Leave a comment..."

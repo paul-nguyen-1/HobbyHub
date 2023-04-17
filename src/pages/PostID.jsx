@@ -22,6 +22,7 @@ function PostID() {
       {posts && posts.length > 0 ? (
         posts.map((post, index) => (
           <PostCard
+            key={index}
             created={post.created_at}
             title={post.title}
             image={post.image}

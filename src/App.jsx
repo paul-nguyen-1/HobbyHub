@@ -1,17 +1,17 @@
 import { useRoutes } from "react-router-dom";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 import PostID from "./pages/PostID";
 
 function App() {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   //Layout of Routes for Application
   let routes = useRoutes([
     {
       path: "/",
-      element: <Home search={search} setSearch={setSearch}/>,
+      element: <Home search={search} />,
     },
     {
       path: "/createPost",
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar search={search} setSearch={setSearch}/>
+      <Navbar search={search} setSearch={setSearch} />
       {routes}
     </div>
   );

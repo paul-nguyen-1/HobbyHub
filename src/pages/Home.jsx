@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
 import Post from "../components/Post";
 
-function Home({ test, search, setSearch }) {
+function Home({ search }) {
   const [posts, setPosts] = useState([]);
   const [newest, setNewest] = useState(null);
   const [popular, setPopular] = useState(null);

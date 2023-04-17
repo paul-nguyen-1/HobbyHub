@@ -43,7 +43,7 @@ function Post({ id, created, title, image, upvote }) {
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
         <img src={image} alt={image} />
-        <p onClick={updateCount}>Upvote {upvote}</p>
+        <p onClick={updateCount}>{upvote} upvotes</p>
       </div>
     </Link>
   );

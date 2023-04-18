@@ -26,6 +26,7 @@ function PostID() {
             key={index}
             created={post.created_at}
             title={post.title}
+            description={post.description}
             image={post.image}
             upvote={post.upvote}
           />

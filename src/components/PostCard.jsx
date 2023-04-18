@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./PostCard.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { supabase } from "../client";
 
-function PostCard({
-  created,
-  title,
-  image,
-  upvote,
-}) {
+function PostCard({ created, title, image, upvote, description }) {
   const { id } = useParams();
   const [comment, setComment] = useState("");
   //Must have a letter or number and allows for empty white space in between
@@ -57,7 +52,7 @@ function PostCard({
     //create copy of arr and remove comment at specific index selected
     const newComments = [...postComments];
     newComments.splice(index, 1);
-    setPostComments(newComments)
+    setPostComments(newComments);
     await supabase.from("Meals").update({ comments: newComments }).eq("id", id);
   };
 
@@ -88,8 +83,17 @@ function PostCard({
       <div className="card">
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
+        <p>{description}</p>
         <img src={image} />
-        <p>{upvote} upvotes</p>
+        <div className="postUpdate">
+          <p>{upvote} upvotes</p>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Link to={`/updatePost/${id}`}>
+              <p>Update</p>
+            </Link>
+            <p>Delete</p>
+          </div>
+        </div>
       </div>
       <div className="comment">
         {postComments.map((comment, index) => (

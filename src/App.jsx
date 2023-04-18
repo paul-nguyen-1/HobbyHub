@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 import PostID from "./pages/PostID";
+import UpdatePostID from "./pages/UpdatePostID";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -20,6 +21,10 @@ function App() {
     {
       path: "/post/:id",
       element: <PostID />,
+    },
+    {
+      path: "/updatePost/:id",
+      element: <UpdatePostID />,
     },
   ]);
 

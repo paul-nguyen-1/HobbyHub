@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../client";
 import { useEffect } from "react";
 import PostCard from "../components/PostCard";
-import gif from '../assets/loading.gif'
+import gif from "../assets/loading.gif";
 
 function PostID() {
   const { id } = useParams();
@@ -28,11 +28,13 @@ function PostID() {
             title={post.title}
             image={post.image}
             upvote={post.upvote}
-            comments={post.comments}
           />
         ))
       ) : (
-        <img src={gif} style={{height: '150px', width:"150px", padding:"50px"}}/>
+        <img
+          src={gif}
+          style={{ height: "150px", width: "150px", padding: "50px" }}
+        />
       )}
     </div>
   );

@@ -3,14 +3,22 @@ import "./PostCard.css";
 import { useParams } from "react-router-dom";
 import { supabase } from "../client";
 
-function PostCard({ created, title, image, upvote, comments }) {
+function PostCard({
+  created,
+  title,
+  image,
+  upvote,
+}) {
   const { id } = useParams();
   const [comment, setComment] = useState("");
+  //Must have a letter or number and allows for empty white space in between
+  const regex = /^[a-zA-Z0-9][a-zA-Z0-9\s]+$/;
+  const [postComments, setPostComments] = useState([]);
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && regex.test(comment)) {
       submitComment();
-      comments.push(comment);
+      postComments.push(comment);
     }
   };
 
@@ -21,15 +29,37 @@ function PostCard({ created, title, image, upvote, comments }) {
 
   useEffect(() => {
     const updateComments = async () => {
-      await supabase
-        .from("Meals")
-        .update({
-          comments: [...comments, comment],
-        })
-        .eq("id", id);
+      if (comment !== "") {
+        await supabase
+          .from("Meals")
+          .update({
+            comments: [...postComments, comment],
+          })
+          .eq("id", id);
+      }
     };
     updateComments();
   }, [comment]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const { data } = await supabase
+        .from("Meals")
+        .select("comments")
+        .eq("id", id);
+      // console.log(data);
+      setPostComments(data[0].comments);
+    };
+    fetchComments();
+  }, [id]);
+
+  const deleteComment = async (index) => {
+    //create copy of arr and remove comment at specific index selected
+    const newComments = [...postComments];
+    newComments.splice(index, 1);
+    setPostComments(newComments)
+    await supabase.from("Meals").update({ comments: newComments }).eq("id", id);
+  };
 
   // Get the current date and convert created time to get date
   const currentDate = new Date();
@@ -62,10 +92,19 @@ function PostCard({ created, title, image, upvote, comments }) {
         <p>{upvote} upvotes</p>
       </div>
       <div className="comment">
-        {comments.map((comment, index) => (
-          <div key={index}>{comment}</div>
+        {postComments.map((comment, index) => (
+          <div key={index}>
+            <div>
+              - {comment}
+              <button
+                style={{ backgroundColor: "white" }}
+                onClick={() => deleteComment(index)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         ))}
-        <p>{comment}</p>
         <input
           placeholder="Leave a comment..."
           value={comment}

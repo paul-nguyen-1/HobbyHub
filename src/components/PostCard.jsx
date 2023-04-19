@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./PostCard.css";
 import { Link, useParams } from "react-router-dom";
 import { supabase } from "../client";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 function PostCard({ created, title, image, upvote, description }) {
   const { id } = useParams();
+  const [count, setCount] = useState(upvote);
   const [comment, setComment] = useState("");
   //Must have a letter or number and allows for empty white space in between
   const regex = /^[a-zA-Z0-9][a-zA-Z0-9\s]+$/;
@@ -62,6 +64,15 @@ function PostCard({ created, title, image, upvote, description }) {
     await supabase.from("Meals").update({ comments: newComments }).eq("id", id);
   };
 
+  //Update count on click
+  const updateCount = async () => {
+    await supabase
+      .from("Meals")
+      .update({ upvote: count + 1 })
+      .eq("id", id);
+    setCount((count) => count + 1);
+  };
+
   // Get the current date and convert created time to get date
   const currentDate = new Date();
   const createdDate = new Date(created);
@@ -92,12 +103,28 @@ function PostCard({ created, title, image, upvote, description }) {
         <p>{description}</p>
         <img src={image} />
         <div className="postUpdate">
-          <p>{upvote} upvotes</p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <p>{count} upvotes</p>
+            <p
+              style={{ cursor: "pointer", marginLeft: "10px" }}
+              onClick={updateCount}
+            >
+              <ThumbUpOffAltIcon />
+            </p>
+          </div>
           <div className="updateDelete">
             <Link to={`/updatePost/${id}`}>
-              <p style={{marginRight:"5px"}}>Update</p>
+              <p style={{ marginRight: "5px" }}>Update</p>
             </Link>
-            <p style={{marginLeft:"5px"}} onClick={deletePost}>Delete</p>
+            <p style={{ marginLeft: "5px" }} onClick={deletePost}>
+              Delete
+            </p>
           </div>
         </div>
       </div>

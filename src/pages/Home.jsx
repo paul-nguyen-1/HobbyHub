@@ -41,10 +41,10 @@ function Home({ search }) {
     <div className="home">
       <div className="homeContainer">
         <p>Order by:</p>
-        <button style={{ color: "white" }} onClick={handleNewest}>
+        <button className="homeButton" style={{backgroundColor:"#744210"}} onClick={handleNewest}>
           {newest ? "Latest" : "Oldest"}
         </button>
-        <button style={{ color: "white" }} onClick={handlePopularity}>
+        <button className="homeButton" style={{backgroundColor:"#ECC94B"}} onClick={handlePopularity}>
           {popular ? "Most Popular" : "Least Popular"}
         </button>
       </div>

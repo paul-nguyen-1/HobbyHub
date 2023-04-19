@@ -68,9 +68,15 @@ function CreatePost() {
         ></input>
         <input
           type="submit"
-          value="Submit"
+          value="Create Post"
           onClick={createPost}
-          style={{ width: "75px", backgroundColor: "red" }}
+          style={{
+            width: "100px",
+            height: "30px",
+            backgroundColor: "#B7791F",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
         />
       </form>
     </div>

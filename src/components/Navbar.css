@@ -25,4 +25,5 @@
     height: 22.5px;
     border-radius: 25px;
     padding: 0px 10px;
+    border: 1px solid transparent;
 }

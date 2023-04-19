@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../client";
 import "./Post.css";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 function Post({ id, created, title, image, upvote }) {
   const [count, setCount] = useState(upvote);
@@ -38,14 +39,30 @@ function Post({ id, created, title, image, upvote }) {
   }
 
   return (
-    <Link to={`post/${id}`}>
-      <div className="post">
-        <p>{elapsedTime}</p>
-        <h1>{title}</h1>
-        <img src={image} alt={image} />
-        <p onClick={updateCount}>{upvote} upvotes</p>
+    <div className="post">
+      <Link to={`post/${id}`}>
+        <div style={{ width: "85vw", cursor: "pointer" }}>
+          <p>{elapsedTime}</p>
+          <h1>{title}</h1>
+          {image && <img src={image} alt={image} />}
+        </div>
+      </Link>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <p onClick={updateCount}>{count} upvotes</p>
+        <p
+          style={{ cursor: "pointer", marginLeft: "10px" }}
+          onClick={updateCount}
+        >
+          <ThumbUpOffAltIcon />
+        </p>
       </div>
-    </Link>
+    </div>
   );
 }
 

@@ -16,6 +16,7 @@ function Navbar({search, setSearch}) {
         <Link to="/createPost">
           <button>Create</button>
         </Link>
+        <button>Meals</button>
       </div>
     </div>
   );

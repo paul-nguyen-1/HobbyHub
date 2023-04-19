@@ -36,6 +36,12 @@ function PostCard({ created, title, image, upvote, description }) {
     updateComments();
   }, [comment]);
 
+  const deletePost = async (e) => {
+    e.preventDefault();
+    await supabase.from("Meals").delete().eq("id", id);
+    window.location = "/";
+  };
+
   useEffect(() => {
     const fetchComments = async () => {
       const { data } = await supabase
@@ -87,11 +93,11 @@ function PostCard({ created, title, image, upvote, description }) {
         <img src={image} />
         <div className="postUpdate">
           <p>{upvote} upvotes</p>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div className="updateDelete">
             <Link to={`/updatePost/${id}`}>
-              <p>Update</p>
+              <p style={{marginRight:"5px"}}>Update</p>
             </Link>
-            <p>Delete</p>
+            <p style={{marginLeft:"5px"}} onClick={deletePost}>Delete</p>
           </div>
         </div>
       </div>

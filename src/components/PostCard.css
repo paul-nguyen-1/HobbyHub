@@ -1,6 +1,12 @@
-.comment{}
+.comment {
+}
 
-.postUpdate{
-    display: flex;
-    justify-content: space-between;
+.postUpdate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.updateDelete {
+  display: flex;
+  cursor: pointer;
 }

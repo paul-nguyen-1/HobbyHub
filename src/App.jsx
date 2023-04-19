@@ -5,6 +5,7 @@ import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 import PostID from "./pages/PostID";
 import UpdatePostID from "./pages/UpdatePostID";
+import Meals from "./pages/Meals";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -25,6 +26,10 @@ function App() {
     {
       path: "/updatePost/:id",
       element: <UpdatePostID />,
+    },
+    {
+      path: "/meals",
+      element: <Meals />,
     },
   ]);
 

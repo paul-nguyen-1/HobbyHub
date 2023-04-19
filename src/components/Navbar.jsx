@@ -2,21 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar({search, setSearch}) {
+function Navbar({ search, setSearch }) {
   return (
     <div className="navbar">
-      <Link to="/" style={{ color: "black" }}>
-        <h1>MealHub</h1>
+      <Link to="/">
+        <h1 style={{ color: "white" }}>MealHub</h1>
       </Link>
-      <input value={search} onChange={(e) => setSearch(e.target.value)}></input>
+      <input
+        className="navInput"
+        value={search}
+        placeholder="Search"
+        onChange={(e) => setSearch(e.target.value)}
+      ></input>
       <div className="navigation">
         <Link to="/">
-          <button>Home</button>
+          <h3 className="navLink">Home</h3>
         </Link>
         <Link to="/createPost">
-          <button>Create</button>
+          <h3 className="navLink">Post</h3>
         </Link>
-        <button>Meals</button>
+        <Link to="/meals">
+          <h3 className="navLink">Meals</h3>
+        </Link>
       </div>
     </div>
   );

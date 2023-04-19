@@ -29,7 +29,7 @@ function Post({ id, created, title, image, upvote }) {
   const oneDay = 24 * oneHour;
 
   if (elapsedTime < oneHour) {
-    elapsedTime = "Post less than 1 hour ago";
+    elapsedTime = "Posted less than 1 hour ago";
   } else if (elapsedTime < oneDay) {
     const hours = Math.floor(elapsedTime / oneHour);
     elapsedTime = `Posted ${hours}h ago`;

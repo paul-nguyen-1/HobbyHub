@@ -49,6 +49,7 @@ function CreatePost() {
           type="text"
           id="title"
           name="title"
+          placeholder="Title"
           value={input.title}
           onChange={handleChange}
         ></input>
@@ -56,6 +57,7 @@ function CreatePost() {
           type="text"
           id="description"
           name="description"
+          placeholder="Description"
           value={input.description}
           onChange={handleChange}
         ></textarea>
@@ -63,6 +65,7 @@ function CreatePost() {
           type="text"
           id="image"
           name="image"
+          placeholder="Image"
           value={input.image}
           onChange={handleChange}
         ></input>

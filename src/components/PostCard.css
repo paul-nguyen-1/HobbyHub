@@ -1,4 +1,31 @@
+.postID {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 100px;
+}
+
+.postCard {
+  background-color: white;
+}
+
 .comment {
+  padding: 10px;
+  background-color: rgba(218, 218, 218, 0.596);
+}
+
+.deleteComment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteComment button {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 5px;
 }
 
 .postUpdate {

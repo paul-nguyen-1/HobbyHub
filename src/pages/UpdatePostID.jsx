@@ -45,6 +45,7 @@ function UpdatePostID() {
           type="text"
           id="title"
           name="title"
+          placeholder="Title"
           value={input.title}
           onChange={handleChange}
         ></input>
@@ -52,6 +53,7 @@ function UpdatePostID() {
           type="text"
           id="description"
           name="description"
+          placeholder="Description"
           value={input.description}
           onChange={handleChange}
         ></textarea>
@@ -59,6 +61,7 @@ function UpdatePostID() {
           type="text"
           id="image"
           name="image"
+          placeholder="Image"
           value={input.image}
           onChange={handleChange}
         ></input>
@@ -66,7 +69,13 @@ function UpdatePostID() {
           type="submit"
           value="Submit"
           onClick={updatePost}
-          style={{ width: "75px", backgroundColor: "red" }}
+          style={{
+            width: "100px",
+            height: "30px",
+            backgroundColor: "#B7791F",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
         />
       </form>
     </div>

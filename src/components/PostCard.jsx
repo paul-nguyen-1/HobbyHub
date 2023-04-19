@@ -3,6 +3,8 @@ import "./PostCard.css";
 import { Link, useParams } from "react-router-dom";
 import { supabase } from "../client";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import CreateIcon from "@mui/icons-material/Create";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function PostCard({ created, title, image, upvote, description }) {
   const { id } = useParams();
@@ -86,7 +88,7 @@ function PostCard({ created, title, image, upvote, description }) {
   const oneDay = 24 * oneHour;
 
   if (elapsedTime < oneHour) {
-    elapsedTime = "Post less than 1 hour ago";
+    elapsedTime = "Posted less than 1 hour ago";
   } else if (elapsedTime < oneDay) {
     const hours = Math.floor(elapsedTime / oneHour);
     elapsedTime = `Posted ${hours}h ago`;
@@ -101,7 +103,7 @@ function PostCard({ created, title, image, upvote, description }) {
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
         <p>{description}</p>
-        <img src={image} />
+        {image && <img src={image} />}
         <div className="postUpdate">
           <div
             style={{
@@ -120,34 +122,38 @@ function PostCard({ created, title, image, upvote, description }) {
           </div>
           <div className="updateDelete">
             <Link to={`/updatePost/${id}`}>
-              <p style={{ marginRight: "5px" }}>Update</p>
+              <p style={{ marginRight: "5px" }} className="icons">
+                <CreateIcon />
+              </p>
             </Link>
-            <p style={{ marginLeft: "5px" }} onClick={deletePost}>
-              Delete
+            <p
+              style={{ marginLeft: "5px" }}
+              className="icons"
+              onClick={deletePost}
+            >
+              <DeleteOutlineOutlinedIcon />
             </p>
           </div>
         </div>
-      </div>
-      <div className="comment">
-        {postComments.map((comment, index) => (
-          <div key={index}>
-            <div>
-              - {comment}
+        <div className="comment">
+          {postComments.map((comment, index) => (
+            <div key={index} className="deleteComment">
+              <div>- {comment}</div>
               <button
                 style={{ backgroundColor: "white" }}
                 onClick={() => deleteComment(index)}
               >
-                Delete
+                x
               </button>
             </div>
-          </div>
-        ))}
-        <input
-          placeholder="Leave a comment..."
-          value={comment}
-          onChange={(event) => setComment(event.target.value)}
-          onKeyPress={handleKeyPress}
-        ></input>
+          ))}
+          <input
+            placeholder="Leave a comment..."
+            value={comment}
+            onChange={(event) => setComment(event.target.value)}
+            onKeyPress={handleKeyPress}
+          ></input>
+        </div>
       </div>
     </div>
   );

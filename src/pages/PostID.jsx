@@ -4,6 +4,7 @@ import { supabase } from "../client";
 import { useEffect } from "react";
 import PostCard from "../components/PostCard";
 import gif from "../assets/loading.gif";
+import "../components/PostCard.css";
 
 function PostID() {
   const { id } = useParams();

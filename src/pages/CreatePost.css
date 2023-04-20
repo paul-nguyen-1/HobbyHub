@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: column wrap;
   align-content: center;
-  background-color: rgba(128, 128, 128, 0.326);
   height: 90vh;
 }
 
@@ -11,7 +10,7 @@
   flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
-  border: 1px solid black;
+  border-radius: 5px;
   margin-top: 10px;
   padding: 10px;
   background-color: white;

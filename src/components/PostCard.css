@@ -37,3 +37,12 @@
   display: flex;
   cursor: pointer;
 }
+
+.postInput{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.postInput input{
+  margin-right: 15px;
+}

@@ -15,7 +15,7 @@ function PostCard({ created, title, image, upvote, description }) {
   const [postComments, setPostComments] = useState([]);
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter" && regex.test(comment)) {
+    if (event.key === "Enter" && regex.test(comment) && comment.length <= 125) {
       submitComment();
       postComments.push(comment);
     }
@@ -28,7 +28,7 @@ function PostCard({ created, title, image, upvote, description }) {
 
   useEffect(() => {
     const updateComments = async () => {
-      if (comment !== "") {
+      if (comment !== "" && comment.length <= 125) {
         await supabase
           .from("Meals")
           .update({
@@ -147,12 +147,21 @@ function PostCard({ created, title, image, upvote, description }) {
               </button>
             </div>
           ))}
-          <input
-            placeholder="Leave a comment..."
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
-            onKeyPress={handleKeyPress}
-          ></input>
+          <div className="postInput">
+            <input
+              placeholder="Leave a comment..."
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+              onKeyPress={handleKeyPress}
+            ></input>
+            <p style={{ color: comment.length <= 125 ? "black" : "red" }}>
+              {comment.length === 0
+                ? "125 Character Limit"
+                : comment.length <= 125
+                ? `${comment.length} characters`
+                : `${comment.length - 125} characters over limit`}
+            </p>
+          </div>
         </div>
       </div>
     </div>

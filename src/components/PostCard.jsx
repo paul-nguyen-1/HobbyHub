@@ -140,10 +140,10 @@ function PostCard({ created, title, image, upvote, description }) {
             <div key={index} className="deleteComment">
               <div>- {comment}</div>
               <button
-                style={{ backgroundColor: "white" }}
+                style={{ backgroundColor: "transparent" }}
                 onClick={() => deleteComment(index)}
               >
-                x
+               <DeleteOutlineOutlinedIcon />
               </button>
             </div>
           ))}

@@ -3,6 +3,9 @@ import "./CreatePost.css";
 import { supabase } from "../client";
 
 function CreatePost() {
+  const URL = "https://cbpfflduoaryrtiobtjf.supabase.co/storage/v1/object/public/images/"
+  const [uploadFile, setUploadFile] = useState(null)
+  const [images, setImages] = useState([]);
   const [input, setInput] = useState({
     title: "",
     description: "",
@@ -10,6 +13,19 @@ function CreatePost() {
     upvote: 0,
     comments: [],
   });
+
+  async function getImages() {
+    const { data, error } = await supabase
+      .storage
+      .from("images")
+      .list("/");
+
+    if (data !== null) {
+      setImages(data);
+    } else{
+      console.log(error)
+    }
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -26,7 +42,7 @@ function CreatePost() {
       .insert({
         title: input.title,
         description: input.description,
-        image: input.image,
+        image: uploadFile,
         upvote: input.upvote,
         comments: input.comments,
       })
@@ -42,6 +58,26 @@ function CreatePost() {
       comments: [],
     });
   };
+
+  //set up image upload
+  async function uploadImage(e) {
+    const file = e.target.files[0];
+    const upload_url = URL + file.name
+    setUploadFile(upload_url)
+    console.log(upload_url)
+    const { data, error } = await supabase
+      .storage
+      .from("images")
+      .upload(file.name, file);
+
+    if (data) {
+      getImages();
+      console.log(data)
+    } else {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="createPost">
       <form className="container">
@@ -61,6 +97,12 @@ function CreatePost() {
           value={input.description}
           onChange={handleChange}
         ></textarea>
+        <input
+          placeholder="Choose file"
+          type="file"
+          accept="image/png, image/jpeg"
+          onChange={(e) => uploadImage(e)}
+        ></input>
         <input
           type="text"
           id="image"

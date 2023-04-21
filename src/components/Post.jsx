@@ -21,7 +21,7 @@ function Post({ id, created, title, image, upvote }) {
     const fetchUpvote = async () => {
       const { data } = await supabase.from("Meals").select().eq("id", id);
       setDataCount(data[0].upvote);
-      console.log(data[0].upvote);
+      // console.log(data[0].upvote);
     };
     fetchUpvote();
   }, [count, upvote, dataCount]);

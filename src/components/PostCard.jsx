@@ -6,7 +6,7 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
-function PostCard({ created, title, image, upvote, description }) {
+function PostCard({ created, title, image, upvote, description, url }) {
   const { id } = useParams();
   const [count, setCount] = useState(upvote);
   const [comment, setComment] = useState("");
@@ -103,6 +103,7 @@ function PostCard({ created, title, image, upvote, description }) {
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
         <p>{description}</p>
+        <a href={url} target="_blank">{url}</a>
         {image && <img src={image} />}
         <div className="postUpdate">
           <div
@@ -143,7 +144,7 @@ function PostCard({ created, title, image, upvote, description }) {
                 style={{ backgroundColor: "transparent" }}
                 onClick={() => deleteComment(index)}
               >
-               <DeleteOutlineOutlinedIcon />
+                <DeleteOutlineOutlinedIcon />
               </button>
             </div>
           ))}

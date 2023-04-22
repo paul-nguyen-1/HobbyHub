@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CreatePost.css";
 import { supabase } from "../client";
+import {v4 as uuidv4} from 'uuid'
 
 function CreatePost() {
   const URL = "https://cbpfflduoaryrtiobtjf.supabase.co/storage/v1/object/public/images/"
@@ -12,6 +13,7 @@ function CreatePost() {
     image: "",
     upvote: 0,
     comments: [],
+    url:""
   });
 
   async function getImages() {
@@ -45,6 +47,7 @@ function CreatePost() {
         image: uploadFile,
         upvote: input.upvote,
         comments: input.comments,
+        url: input.url
       })
       .select();
 
@@ -56,6 +59,7 @@ function CreatePost() {
       image: "",
       upvote: 0,
       comments: [],
+      url:""
     });
   };
 
@@ -68,7 +72,7 @@ function CreatePost() {
     const { data, error } = await supabase
       .storage
       .from("images")
-      .upload(file.name, file);
+      .upload(`${uuidv4()}/${file.name}`, file);
 
     if (data) {
       getImages();
@@ -105,15 +109,15 @@ function CreatePost() {
         ></input>
         <input
           type="text"
-          id="image"
-          name="image"
-          placeholder="Image"
-          value={input.image}
+          id="url"
+          name="url"
+          placeholder="Recipe URL"
+          value={input.url}
           onChange={handleChange}
         ></input>
         <input
           type="submit"
-          value="Create Post"
+          value="Create"
           onClick={createPost}
           style={{
             width: "100px",

@@ -30,6 +30,7 @@ function PostID() {
             description={post.description}
             image={post.image}
             upvote={post.upvote}
+            url={post.url}
           />
         ))
       ) : (

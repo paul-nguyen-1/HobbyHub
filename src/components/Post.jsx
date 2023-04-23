@@ -54,7 +54,7 @@ function Post({ id, created, title, image, upvote }) {
         <div style={{ width: "85vw", cursor: "pointer" }}>
           <p>{elapsedTime}</p>
           <h1>{title}</h1>
-          {image && <img src={image} alt={image} />}
+          {image && <img src={image} alt={image} className="postImg"/>}
         </div>
       </Link>
       <div

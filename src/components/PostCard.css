@@ -46,3 +46,13 @@
 .postInput input{
   margin-right: 15px;
 }
+
+.postImg{
+  height: 350px;
+  width: 350px;
+}
+
+.card > a{
+  text-decoration: underline;
+  color: rgba(0, 26, 128, 0.638);
+}

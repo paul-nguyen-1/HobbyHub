@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
 import { useParams } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function UpdatePostID() {
   const URL =
@@ -8,12 +9,27 @@ function UpdatePostID() {
   const [uploadFile, setUploadFile] = useState(null);
   const [images, setImages] = useState([]);
   const { id } = useParams();
+  const [uuid, setUuid] = useState(null);
   const [input, setInput] = useState({
     title: "",
     description: "",
     image: "",
     url: "",
   });
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const { data } = await supabase.from("Meals").select().eq("id", id);
+      console.log(data[0]);
+      setInput((prevInput) => ({
+        ...prevInput,
+        title: data[0].title,
+        description: data[0].description,
+        url: data[0].url,
+      }));
+    };
+    fetchPost();
+  }, [id]);
 
   async function getImages() {
     const { data, error } = await supabase.storage.from("images").list("/");
@@ -30,7 +46,7 @@ function UpdatePostID() {
     setInput((prev) => {
       return { ...prev, [name]: e.target.value };
     });
-    console.log(input);
+    // console.log(input);
   };
 
   const updatePost = async (event) => {
@@ -56,23 +72,24 @@ function UpdatePostID() {
     });
   };
 
-  //set up image upload
-  async function uploadImage(e) {
+  const uploadImage = async (e) => {
     const file = e.target.files[0];
-    const upload_url = URL + file.name;
+    const uuid = uuidv4();
+    const upload_url = URL + uuid + "/" + file.name;
     setUploadFile(upload_url);
-    console.log(upload_url);
+
     const { data, error } = await supabase.storage
       .from("images")
-      .upload(`${uuidv4()}/${file.name}`, file);
+      .upload(`${uuid}/${file.name}`, file);
 
     if (data) {
+      setUuid(uuid); // Store the UUID in state
       getImages();
       console.log(data);
     } else {
       console.log(error);
     }
-  }
+  };
   return (
     <div className="createPost">
       <form className="container">

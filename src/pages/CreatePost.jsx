@@ -1,40 +1,39 @@
 import React, { useState } from "react";
 import "./CreatePost.css";
 import { supabase } from "../client";
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 
 function CreatePost() {
-  const URL = "https://cbpfflduoaryrtiobtjf.supabase.co/storage/v1/object/public/images/"
-  const [uploadFile, setUploadFile] = useState(null)
+  const URL =
+    "https://cbpfflduoaryrtiobtjf.supabase.co/storage/v1/object/public/images/";
+  const [uploadFile, setUploadFile] = useState(null);
   const [images, setImages] = useState([]);
+  const [uuid, setUuid] = useState(null);
   const [input, setInput] = useState({
     title: "",
     description: "",
     image: "",
     upvote: 0,
     comments: [],
-    url:""
+    url: "",
   });
 
   async function getImages() {
-    const { data, error } = await supabase
-      .storage
-      .from("images")
-      .list("/");
+    const { data, error } = await supabase.storage.from("images").list("/");
 
     if (data !== null) {
       setImages(data);
-    } else{
-      console.log(error)
+    } else {
+      console.log(error);
     }
-  };
+  }
 
   const handleChange = (e) => {
     const name = e.target.name;
     setInput((prev) => {
       return { ...prev, [name]: e.target.value };
     });
-    console.log(input);
+    // console.log(input);
   };
 
   const createPost = async (event) => {
@@ -47,7 +46,7 @@ function CreatePost() {
         image: uploadFile,
         upvote: input.upvote,
         comments: input.comments,
-        url: input.url
+        url: input.url,
       })
       .select();
 
@@ -59,24 +58,24 @@ function CreatePost() {
       image: "",
       upvote: 0,
       comments: [],
-      url:""
+      url: "",
     });
   };
 
-  //set up image upload
-  async function uploadImage(e) {
+  const uploadImage = async (e) => {
     const file = e.target.files[0];
-    const upload_url = URL + file.name
-    setUploadFile(upload_url)
-    console.log(upload_url)
-    const { data, error } = await supabase
-      .storage
+    const uuid = uuidv4();
+    const upload_url = URL + uuid + "/" + file.name;
+    setUploadFile(upload_url);
+
+    const { data, error } = await supabase.storage
       .from("images")
-      .upload(`${uuidv4()}/${file.name}`, file);
+      .upload(`${uuid}/${file.name}`, file);
 
     if (data) {
+      setUuid(uuid); // Store the UUID in state
       getImages();
-      console.log(data)
+      console.log(data);
     } else {
       console.log(error);
     }

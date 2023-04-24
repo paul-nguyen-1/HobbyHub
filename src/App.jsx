@@ -29,7 +29,7 @@ function App() {
     },
     {
       path: "/meals",
-      element: <Meals />,
+      element: <Meals search={search}/>,
     },
   ]);
 

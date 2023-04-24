@@ -14,7 +14,7 @@ function Navbar({ search, setSearch }) {
         placeholder="Search"
         onChange={(e) => setSearch(e.target.value)}
       ></input>
-      <div className="navigation">
+      <div className="navigation" onClick={() => setSearch("")}>
         <Link to="/">
           <h3 className="navLink">Home</h3>
         </Link>

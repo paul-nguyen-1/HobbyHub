@@ -11,7 +11,7 @@ function PostCard({ created, title, image, upvote, description, url }) {
   const [count, setCount] = useState(upvote);
   const [comment, setComment] = useState("");
   //Must have a letter or number and allows for empty white space in between
-  const regex = /^[a-zA-Z0-9][a-zA-Z0-9\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/
+  const regex = /^[a-zA-Z0-9][a-zA-Z0-9\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
   const [postComments, setPostComments] = useState([]);
 
   const handleKeyPress = (event) => {
@@ -103,8 +103,12 @@ function PostCard({ created, title, image, upvote, description, url }) {
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
         <p>{description}</p>
-        <a href={url} target="_blank">{url}</a>
-        {image && <img src={image} className="postImg"/>}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {image && <img src={image} className="postImg" />}
+          <a href={url} target="_blank" style={{ color: "blue", marginTop:"15px" }}>
+            {url}
+          </a>
+        </div>
         <div className="postUpdate">
           <div
             style={{

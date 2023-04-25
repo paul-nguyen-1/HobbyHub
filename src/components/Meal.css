@@ -1,0 +1,22 @@
+.meal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  padding: 25px 100px;
+}
+
+.mealHeader {
+  display: flex;
+  align-items: center;
+}
+
+.meal button {
+  background-color: white;
+}
+
+.sentenceLabel {
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 5px;
+}

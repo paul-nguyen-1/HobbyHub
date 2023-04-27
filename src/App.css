@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgba(218, 218, 218, 0.596);
+  background-color: white;
 }
 
 @keyframes logo-spin {
@@ -35,13 +35,13 @@ body {
 .home {
   display: flex;
   flex-direction: column;
-  padding: 20px 100px;
 }
 
 .homeContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0px 100px;
 }
 
 .homeButton {
@@ -57,4 +57,68 @@ body {
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+
+.homeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 12px;
+  background-color: white;
+  background: url("/public/header.jpeg");
+  opacity: 0.9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 65vh;
+}
+
+.homeHeader:hover {
+  opacity: 1;
+}
+
+.homeHeader p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.headerCard {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+  background-color: rgba(255, 255, 255, 0.924);
+  padding: 0px 20px;
+  width: 450px;
+  margin-left: 105px;
+}
+
+.headerCard h1 {
+  font-size: 30px;
+}
+
+.user {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.userID {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerCard img {
+  margin-bottom: 15px;
+  height: 30px;
+  width: 30px;
+  border-radius: 90px;
+  margin-right: 20px;
+}
+
+.user h1 {
+  line-height: 0px;
+  font-size: 16px;
 }

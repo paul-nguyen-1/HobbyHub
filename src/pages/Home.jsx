@@ -2,7 +2,8 @@ import "../App.css";
 import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
 import Post from "../components/Post";
-import gif from '../assets/loading.gif'
+import gif from "../assets/loading.gif";
+import character from "/character.jpeg";
 
 function Home({ search }) {
   const [posts, setPosts] = useState([]);
@@ -39,12 +40,38 @@ function Home({ search }) {
 
   return (
     <div className="home">
+      <div className="homeHeader">
+        <div className="headerCard">
+          <h1>Enriching your life with bold flavors</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+          <div className="user">
+            <img src={character} />
+            <div>
+              <h1>Paul Nguyen</h1>
+              <p>4/1/2023</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="subscribeCard">test</div>
       <div className="homeContainer">
         <p>Order by:</p>
-        <button className="homeButton" style={{backgroundColor:"#744210"}} onClick={handleNewest}>
+        <button
+          className="homeButton"
+          style={{ backgroundColor: "#744210" }}
+          onClick={handleNewest}
+        >
           {newest ? "Latest" : "Oldest"}
         </button>
-        <button className="homeButton" style={{backgroundColor:"#ECC94B"}} onClick={handlePopularity}>
+        <button
+          className="homeButton"
+          style={{ backgroundColor: "#ECC94B" }}
+          onClick={handlePopularity}
+        >
           {popular ? "Most Popular" : "Least Popular"}
         </button>
       </div>

@@ -3,9 +3,9 @@
   justify-content: space-around;
   align-items: center;
   color: white;
-  height: 75px;
+  height: 65px;
   width: 100vw;
-  background-color: #9f62127b;
+  background-color: white;
 }
 
 .navigation {
@@ -17,13 +17,47 @@
 
 .navLink {
   margin: 12.5px;
-  color: white;
+  color: rgba(0, 0, 0, 0.764);
 }
 
-.navInput{
-    width: 275px;
-    height: 22.5px;
-    border-radius: 25px;
-    padding: 0px 10px;
-    border: 1px solid transparent;
+.navInput {
+  width: 200px;
+  height: 22.5px;
+  padding: 0px 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
+
+input:focus {
+  outline: none;
+}
+
+form:focus-within {
+  outline: 1px solid blue;
+}
+
+.navSearch {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.inputSearch {
+  border: 1px solid black;
+  height: 22.5px;
+  width: 25px;
+  background-color: yellow;
+  color: black;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  left: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22.5px;
+  background-color: transparent;
+}
+

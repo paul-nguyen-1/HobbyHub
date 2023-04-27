@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import PostID from "./pages/PostID";
 import UpdatePostID from "./pages/UpdatePostID";
 import Meals from "./pages/Meals";
+import Carousel from "./components/Carousel";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -29,12 +30,13 @@ function App() {
     },
     {
       path: "/meals",
-      element: <Meals search={search}/>,
+      element: <Meals search={search} />,
     },
   ]);
 
   return (
     <div className="App">
+      <Carousel />
       <Navbar search={search} setSearch={setSearch} />
       {routes}
     </div>

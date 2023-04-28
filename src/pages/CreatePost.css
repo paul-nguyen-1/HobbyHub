@@ -2,18 +2,23 @@
   display: flex;
   flex-flow: column wrap;
   align-content: center;
-  height: 77vh;
+  padding: 10px;
 }
 
 .container {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  align-items: flex-start;
-  border-radius: 5px;
-  margin-top: 10px;
-  padding: 10px;
+  align-items: center;
+  align-content: center;
   background-color: white;
+  width: 650px;
+  height: 405px;
+}
+
+.createPost input {
+  margin: 5px;
+  width: 620px;
 }
 
 .createPost button {
@@ -21,12 +26,10 @@
   width: 80px;
 }
 
-.createPost input,
-.createPost textarea {
-  margin: 5px;
-  width: 550px;
-}
-
-.createPost textarea {
-  height: 200px;
+.reactQuill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 630px;
+  padding: 5px;
 }

@@ -36,7 +36,11 @@ function Meals({ search }) {
       ) : (
         <img
           src={gif}
-          style={{ height: "150px", width: "150px", padding: "50px" }}
+          style={{
+            height: "150px",
+            width: "150px",
+            padding: "50px",
+          }}
         />
       )}
     </div>

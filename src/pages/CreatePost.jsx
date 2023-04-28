@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./CreatePost.css";
 import { supabase } from "../client";
 import { v4 as uuidv4 } from "uuid";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function CreatePost() {
   const URL =
@@ -81,6 +83,16 @@ function CreatePost() {
     }
   };
 
+  const handleQuill = (value) => {
+    setInput((prev) => {
+      return {
+        ...prev,
+        description: value,
+      };
+    });
+  };
+
+
   return (
     <div className="createPost">
       <form className="container">
@@ -92,19 +104,20 @@ function CreatePost() {
           value={input.title}
           onChange={handleChange}
         ></input>
-        <textarea
-          type="text"
-          id="description"
-          name="description"
-          placeholder="Description"
-          value={input.description}
-          onChange={handleChange}
-        ></textarea>
+        <div className="reactQuill">
+          <ReactQuill
+            theme="snow"
+            value={input.description}
+            onChange={handleQuill}
+            style={{ width: "100%", height: "200px" }}
+          />
+        </div>
         <input
           placeholder="Choose file"
           type="file"
           accept="image/png, image/jpeg"
           onChange={(e) => uploadImage(e)}
+          style={{marginTop:"45px"}}
         ></input>
         <input
           type="text"
@@ -124,7 +137,7 @@ function CreatePost() {
             backgroundColor: "#3399CC",
             borderRadius: "5px",
             cursor: "pointer",
-            border:"none"
+            border: "none",
           }}
         />
       </form>

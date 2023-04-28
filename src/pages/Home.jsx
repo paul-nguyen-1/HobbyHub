@@ -38,6 +38,10 @@ function Home({ search }) {
     setEventChoice(false);
   };
 
+  const handleEmail = () => {
+    window.location.href = "mailto:paul121596@icloud.com";
+  };
+
   return (
     <div className="home">
       <div className="homeHeader">
@@ -61,7 +65,9 @@ function Home({ search }) {
         <h1 className="subscribe">Get the special recipes today!</h1>
         <input type="text" className="subscribeInput" placeholder="Name:" />
         <input type="email" className="subscribeInput" placeholder="Email:" />
-        <button className="subscribeButton">SUBSCRIBE</button>
+        <button className="subscribeButton" onClick={handleEmail}>
+          SUBSCRIBE
+        </button>
       </div>
       <div className="homeContainer">
         <p>Order by:</p>

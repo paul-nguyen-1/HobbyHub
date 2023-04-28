@@ -102,10 +102,14 @@ function PostCard({ created, title, image, upvote, description, url }) {
       <div className="card">
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
-        <p>{description}</p>
+        <div dangerouslySetInnerHTML={{ __html: description }}></div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           {image && <img src={image} className="postCardImg" />}
-          <a href={url} target="_blank" style={{ color: "blue", marginTop:"15px" }}>
+          <a
+            href={url}
+            target="_blank"
+            style={{ color: "blue", marginTop: "15px" }}
+          >
             {url}
           </a>
         </div>

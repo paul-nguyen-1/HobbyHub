@@ -130,9 +130,10 @@ function UpdatePostID() {
           style={{
             width: "100px",
             height: "30px",
-            backgroundColor: "#B7791F",
+            backgroundColor: "#3399CC",
             borderRadius: "5px",
             cursor: "pointer",
+            border: "none",
           }}
         />
       </form>

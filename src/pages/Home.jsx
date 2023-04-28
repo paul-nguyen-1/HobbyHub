@@ -57,7 +57,12 @@ function Home({ search }) {
           </div>
         </div>
       </div>
-      <div className="subscribeCard">test</div>
+      <div className="subscribeCard">
+        <h1 className="subscribe">Get the special recipes today!</h1>
+        <input type="text" className="subscribeInput" placeholder="Name:" />
+        <input type="email" className="subscribeInput" placeholder="Email:" />
+        <button className="subscribeButton">SUBSCRIBE</button>
+      </div>
       <div className="homeContainer">
         <p>Order by:</p>
         <button
@@ -91,7 +96,7 @@ function Home({ search }) {
         ) : (
           <img
             src={gif}
-            style={{ height: "150px", width: "150px", padding: "50px" }}
+            style={{ height: "150px", width: "150px", padding: "200px" }}
           />
         )}
       </div>

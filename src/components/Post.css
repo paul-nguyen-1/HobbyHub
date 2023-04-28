@@ -1,20 +1,32 @@
 .post {
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
-  padding-left: 20px;
+  margin: 20px 10px;
   background-color: rgb(255, 255, 255);
   margin-top: 15px;
   border-radius: 5px;
-  align-content: center;
+  width: 17.5%;
   color: black;
 }
 
-.post h1{
+.post h1 {
   font-size: 24px;
+  padding: 0 7.5px;
 }
 
-.postImg{
-  height: 150px;
-  width: 175px;
+.post p {
+  line-height: 5px;
+  padding: 0px 7.5px;
+}
+
+.postImg {
+  height: 200px;
+  width: 100%;
+}
+
+.postCount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translateY(-22.5px);
 }

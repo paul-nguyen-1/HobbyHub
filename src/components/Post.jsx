@@ -51,24 +51,15 @@ function Post({ id, created, title, image, upvote }) {
   return (
     <div className="post">
       <Link to={`post/${id}`}>
-        <div style={{ width: "85vw", cursor: "pointer" }}>
+        <div className="postCard">
+          {image && <img src={image} alt={image} className="postImg" />}
           <p>{elapsedTime}</p>
           <h1>{title}</h1>
-          {image && <img src={image} alt={image} className="postImg"/>}
         </div>
       </Link>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
-        <p onClick={updateCount}>{dataCount} upvotes</p>
-        <p
-          style={{ cursor: "pointer", marginLeft: "10px" }}
-          onClick={updateCount}
-        >
+      <div className="postCount">
+        <p>{dataCount} upvotes</p>
+        <p style={{ cursor: "pointer" }} onClick={updateCount}>
           <ThumbUpOffAltIcon />
         </p>
       </div>

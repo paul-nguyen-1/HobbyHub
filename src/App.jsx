@@ -7,6 +7,7 @@ import PostID from "./pages/PostID";
 import UpdatePostID from "./pages/UpdatePostID";
 import Meals from "./pages/Meals";
 import Carousel from "./components/Carousel";
+import Footer from "./components/Footer";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -39,6 +40,7 @@ function App() {
       <Carousel />
       <Navbar search={search} setSearch={setSearch} />
       {routes}
+      <Footer />
     </div>
   );
 }

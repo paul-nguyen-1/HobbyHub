@@ -104,7 +104,7 @@ function PostCard({ created, title, image, upvote, description, url }) {
         <h1>{title}</h1>
         <p>{description}</p>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {image && <img src={image} className="postImg" />}
+          {image && <img src={image} className="postCardImg" />}
           <a href={url} target="_blank" style={{ color: "blue", marginTop:"15px" }}>
             {url}
           </a>

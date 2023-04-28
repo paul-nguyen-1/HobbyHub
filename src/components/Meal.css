@@ -20,3 +20,22 @@
   font-weight: bold;
   margin-right: 5px;
 }
+
+.mealContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mealSource {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 15px;
+}
+
+.mealInstruction {
+  margin-left: 15px;
+  height: 60vh;
+  overflow: auto;
+}

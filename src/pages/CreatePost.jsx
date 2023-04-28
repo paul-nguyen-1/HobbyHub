@@ -92,7 +92,6 @@ function CreatePost() {
     });
   };
 
-
   return (
     <div className="createPost">
       <form className="container">
@@ -117,7 +116,7 @@ function CreatePost() {
           type="file"
           accept="image/png, image/jpeg"
           onChange={(e) => uploadImage(e)}
-          style={{marginTop:"45px"}}
+          style={{ marginTop: "45px", marginRight: "15px" }}
         ></input>
         <input
           type="text"
@@ -128,17 +127,10 @@ function CreatePost() {
           onChange={handleChange}
         ></input>
         <input
+          className="postButton"
           type="submit"
-          value="Create"
+          value="Submit"
           onClick={createPost}
-          style={{
-            width: "100px",
-            height: "30px",
-            backgroundColor: "#3399CC",
-            borderRadius: "5px",
-            cursor: "pointer",
-            border: "none",
-          }}
         />
       </form>
     </div>

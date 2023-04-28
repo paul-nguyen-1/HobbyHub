@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
-import Ingredients from "./Ingredients";
 import "./Meal.css";
 
 function Meal({
@@ -13,13 +12,10 @@ function Meal({
   image,
   source,
 }) {
-  const [activeIngredients, setActiveIngredients] = useState(false);
+  const sentences = instructions
+    .split(".")
+    .filter((sentence) => sentence.trim() !== "");
 
-  const sentences = instructions.split(". ");
-
-  const handleIngredients = () => {
-    setActiveIngredients(!activeIngredients);
-  };
   return (
     <div key={index} className="meal">
       <div className="mealHeader">
@@ -31,23 +27,29 @@ function Meal({
         <h1>{name}</h1>
       </div>
       <h2>{`${area}/${category}`}</h2>
-      <button onClick={handleIngredients}>Ingredients</button>
-      {activeIngredients && <Ingredients />}
-      {sentences.map((sentence, index) => (
-        <p key={index}>
-          <span className="sentenceLabel">{index + 1})</span>
-          {sentence.trim()}
-        </p>
-      ))}
-      <a
-        href={source}
-        target="_blank"
-        style={{ color: "blue", marginBottom: "20px" }}
-      >
-        Source
-      </a>
-      <div className="youtubeBox">
-        <ReactPlayer url={youtube} />
+      <button>Save Dish</button>
+      <div className="mealContainer">
+        <div className="mealSource">
+          <a
+            href={source}
+            target="_blank"
+            style={{ color: "blue", marginBottom: "10px" }}
+          >
+            Full Recipe
+          </a>
+          <div className="youtubeBox">
+            <ReactPlayer url={youtube} controls={true} />
+          </div>
+        </div>
+        <div className="mealInstruction">
+          <h3>Instructions:</h3>
+          {sentences.map((sentence, index) => (
+            <p key={index}>
+              <span className="sentenceLabel">{index + 1})</span>
+              {sentence.trim()}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

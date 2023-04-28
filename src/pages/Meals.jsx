@@ -19,7 +19,7 @@ function Meals({ search }) {
   }, [searchMeals, search]);
 
   return (
-    <div>
+    <div className="meals">
       {meals ? (
         <div>
           <Meal
@@ -34,14 +34,7 @@ function Meals({ search }) {
           />
         </div>
       ) : (
-        <img
-          src={gif}
-          style={{
-            height: "150px",
-            width: "150px",
-            padding: "50px",
-          }}
-        />
+        <img src={gif} className="mealsLoader" />
       )}
     </div>
   );

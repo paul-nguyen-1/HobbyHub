@@ -124,7 +124,7 @@ function UpdatePostID() {
           placeholder="Choose file"
           type="file"
           accept="image/png, image/jpeg"
-          style={{ marginTop: "45px" }}
+          style={{ marginTop: "45px", marginRight: "15px" }}
           onChange={(e) => uploadImage(e)}
         ></input>
         <input
@@ -136,17 +136,10 @@ function UpdatePostID() {
           onChange={handleChange}
         ></input>
         <input
+          className="postButton"
           type="submit"
-          value="Update"
+          value="Submit"
           onClick={updatePost}
-          style={{
-            width: "100px",
-            height: "30px",
-            backgroundColor: "#3399CC",
-            borderRadius: "5px",
-            cursor: "pointer",
-            border: "none",
-          }}
         />
       </form>
     </div>

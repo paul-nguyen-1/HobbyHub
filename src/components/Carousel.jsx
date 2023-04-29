@@ -15,43 +15,43 @@ function Carousel() {
         <div className="slide">
           <img src={heb} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={yelp} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={uber} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={hellofresh} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={homechef} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={wholefoods} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={blueapron} height="35" width="75" alt="" />
         </div>
         <div className="slide">
           <img src={heb} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={yelp} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={uber} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={hellofresh} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={homechef} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={wholefoods} height="35" width="75" alt="" />
         </div>
-        <div class="slide">
+        <div className="slide">
           <img src={blueapron} height="35" width="75" alt="" />
         </div>
       </div>

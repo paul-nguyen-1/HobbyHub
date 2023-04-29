@@ -39,3 +39,19 @@
   height: 60vh;
   overflow: auto;
 }
+
+.mealButton {
+  display: flex;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(54, 225, 48, 0.835) !important;
+  color: white;
+}
+
+.mealButton:hover {
+  transform: scale(1.01);
+  background-color: white !important;
+  color: rgba(54, 225, 48, 0.835);
+  border: 1px solid rgba(54, 225, 48, 0.835);
+}

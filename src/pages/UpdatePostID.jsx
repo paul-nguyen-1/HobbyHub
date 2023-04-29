@@ -22,7 +22,7 @@ function UpdatePostID() {
   useEffect(() => {
     const fetchPost = async () => {
       const { data } = await supabase.from("Meals").select().eq("id", id);
-      console.log(data[0]);
+      // console.log(data[0]);
       setInput((prevInput) => ({
         ...prevInput,
         title: data[0].title,

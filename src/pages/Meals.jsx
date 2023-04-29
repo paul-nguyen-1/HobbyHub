@@ -13,7 +13,7 @@ function Meals({ search }) {
       const response = await fetch(`${searchURL}`);
       const json = await response.json();
       setMeals(json.meals);
-      console.log(json.meals[0]);
+      // console.log(json.meals[0]);
     };
     fetchMeals().catch(console.error);
   }, [searchMeals, search]);

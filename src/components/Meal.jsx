@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
+import { supabase } from "../client";
 import "./Meal.css";
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 
 function Meal({
   index,
@@ -12,9 +14,44 @@ function Meal({
   image,
   source,
 }) {
+  const [input, setInput] = useState({
+    title: "",
+    description: "",
+    image: "",
+    upvote: 0,
+    comments: [],
+    url: "",
+  });
+
   const sentences = instructions
     .split(".")
     .filter((sentence) => sentence.trim() !== "");
+
+  const createPost = async (event) => {
+    event.preventDefault();
+    await supabase
+      .from("Meals")
+      .insert({
+        title: name,
+        description: instructions,
+        image: image,
+        upvote: input.upvote,
+        comments: input.comments,
+        url: source,
+      })
+      .select();
+
+    window.location = "/";
+
+    setInput({
+      title: "",
+      description: "",
+      image: "",
+      upvote: 0,
+      comments: [],
+      url: "",
+    });
+  };
 
   return (
     <div key={index} className="meal">
@@ -27,7 +64,9 @@ function Meal({
         <h1>{name}</h1>
       </div>
       <h2>{`${area}/${category}`}</h2>
-      <button>Save Dish</button>
+      <button onClick={createPost} className="mealButton">
+      Save Dish&nbsp;<LibraryAddIcon />
+      </button>
       <div className="mealContainer">
         <div className="mealSource">
           <a

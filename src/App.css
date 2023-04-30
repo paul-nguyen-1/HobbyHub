@@ -99,7 +99,8 @@ body {
 }
 
 .headerCard h1 {
-  font-size: 30px;
+  font-size: 28px;
+  margin-block-end: 0em;
 }
 
 .user {
@@ -159,13 +160,13 @@ body {
   margin: 0 15px;
 }
 
-.mealsLoader{
+.mealsLoader {
   height: 150px;
   width: 150px;
   padding: 50px;
 }
 
-.meals{
+.meals {
   display: flex;
   justify-content: center;
   align-items: center;

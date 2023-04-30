@@ -6,7 +6,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import HomeIcon from "@mui/icons-material/Home";
-import error from "../assets/error.gif";
 
 function Navbar({ search, setSearch, posts, meals }) {
   const [postsActive, setPostsActive] = useState(false);
@@ -75,8 +74,11 @@ function Navbar({ search, setSearch, posts, meals }) {
             <CloseIcon />
           </button>
         )}
-        {postsActive && postSearch && (
-          <div className="postsNavSearch">
+        {postsActive && postSearch && posts && (
+          <div
+            className="postsNavSearch"
+            style={{ height: posts.length > 5 ? "190px" : "" }}
+          >
             {posts.length > 0 ? (
               posts.map((post, index) => (
                 <p
@@ -84,24 +86,41 @@ function Navbar({ search, setSearch, posts, meals }) {
                   className="postNavSearch"
                   onClick={handleHomeSearch}
                 >
-                  {post.title}
+                  <img
+                    src={post.image}
+                    style={{
+                      height: "25px",
+                      width: "25px",
+                      marginRight: "10px",
+                    }}
+                    alt=""
+                  />
+                  {post.title.slice(0, 23)}
                 </p>
               ))
             ) : (
-              <img src={error} className="navError"/>
+              <p style={{ padding: "10px" }}>No recipes found.</p>
             )}
           </div>
         )}
         {postsActive && mealSearch && meals ? (
-          <div className="postsNavSearch">
+          <div
+            className="postsNavSearch"
+            style={{ height: meals && meals.length > 5 ? "180px" : "" }}
+          >
             {meals.map((meal, index) => (
-              <p
+              <div
                 key={index}
                 className="postNavSearch"
                 onClick={handleHomeSearch}
               >
-                {meal.strMeal}
-              </p>
+                <img
+                  src={meal.strMealThumb}
+                  style={{ height: "25px", width: "25px", marginRight: "10px" }}
+                  alt="No Image. Sorry :("
+                />
+                <p>{meal.strMeal.slice(0, 23)}</p>
+              </div>
             ))}
           </div>
         ) : null}

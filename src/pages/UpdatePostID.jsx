@@ -23,9 +23,9 @@ function UpdatePostID() {
     const fetchPost = async () => {
       const { data } = await supabase.from("Meals").select().eq("id", id);
       // console.log(data[0]);
-      const fileUrl = data[0].image; // Get the URL of the file associated with the current post
+      const fileUrl = data[0].image;
       if (fileUrl) {
-        setUploadFile(fileUrl); // Set the URL as the value of the uploadFile state
+        setUploadFile(fileUrl); 
       }
       setInput((prevInput) => ({
         ...prevInput,

@@ -11,11 +11,14 @@ import Footer from "./components/Footer";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [meals, setMeals] = useState(null);
+
   //Layout of Routes for Application
   let routes = useRoutes([
     {
       path: "/",
-      element: <Home search={search} />,
+      element: <Home search={search} posts={posts} setPosts={setPosts} />,
     },
     {
       path: "/createPost",
@@ -31,14 +34,19 @@ function App() {
     },
     {
       path: "/meals",
-      element: <Meals search={search} />,
+      element: <Meals search={search} meals={meals} setMeals={setMeals} />,
     },
   ]);
 
   return (
     <div className="App">
       <Carousel />
-      <Navbar search={search} setSearch={setSearch} />
+      <Navbar
+        search={search}
+        setSearch={setSearch}
+        posts={posts}
+        meals={meals}
+      />
       {routes}
       <Footer />
     </div>

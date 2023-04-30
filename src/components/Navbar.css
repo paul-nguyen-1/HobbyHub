@@ -26,6 +26,7 @@
   padding: 0px 5px;
   border: 1px solid black;
   border-radius: 5px;
+  z-index: 3;
 }
 
 input:focus {
@@ -59,5 +60,38 @@ form:focus-within {
   justify-content: center;
   height: 22.5px;
   background-color: transparent;
+  z-index: 4;
 }
 
+.postsNavSearch {
+  height: 200px;
+  width: 212px;
+  position: absolute;
+  top: 7.5px;
+  color: black;
+  background-color: white;
+  overflow: scroll;
+  margin: 0;
+  z-index: 2;
+}
+
+.postNavSearch {
+  display: flex;
+  align-content: center;
+  padding: 10px;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+}
+
+.postNavSearch:hover {
+  background-color: gray;
+}
+
+.navError {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  height: 150px;
+  width: 150px;
+}

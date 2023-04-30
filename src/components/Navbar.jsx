@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "/logo.png";
@@ -6,15 +6,60 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import HomeIcon from "@mui/icons-material/Home";
+import error from "../assets/error.gif";
 
-function Navbar({ search, setSearch }) {
+function Navbar({ search, setSearch, posts, meals }) {
+  const [postsActive, setPostsActive] = useState(false);
+  const [postSearch, setPostSearch] = useState(true);
+  const [mealSearch, setMealSearch] = useState(false);
+
+  const handlePostsActive = () => {
+    setPostsActive(true);
+  };
+
+  const exitNavSearch = () => {
+    setSearch("");
+    setPostsActive(false);
+  };
+
+  const handleNavSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleHomeSearch = (event) => {
+    setSearch(event.target.textContent);
+    setPostsActive(false);
+  };
+
+  const handlePostSearch = () => {
+    setPostSearch(true);
+    setMealSearch(false);
+  };
+
+  const handleMealSearch = () => {
+    setMealSearch(true);
+    setPostSearch(false);
+  };
+
+  const handleCancelSearch = () => {
+    setMealSearch(false);
+    setPostSearch(false);
+  };
+
+  const handleHomeLogo = () => {
+    setSearch("");
+    setPostsActive(false);
+    setPostSearch(true);
+    setMealSearch(false);
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
         <img
           src={logo}
           style={{ height: "50px", width: "50px" }}
-          onClick={() => setSearch("")}
+          onClick={handleHomeLogo}
         />
       </Link>
       <div className="navSearch">
@@ -22,27 +67,58 @@ function Navbar({ search, setSearch }) {
           className="navInput"
           value={search}
           placeholder="&#128269; What are you looking for?"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={handleNavSearch}
+          onClick={handlePostsActive}
         ></input>
-        {search && (
-          <button className="icon" onClick={() => setSearch("")}>
+        {postsActive && (
+          <button className="icon" onClick={exitNavSearch}>
             <CloseIcon />
           </button>
         )}
+        {postsActive && postSearch && (
+          <div className="postsNavSearch">
+            {posts.length > 0 ? (
+              posts.map((post, index) => (
+                <p
+                  key={index}
+                  className="postNavSearch"
+                  onClick={handleHomeSearch}
+                >
+                  {post.title}
+                </p>
+              ))
+            ) : (
+              <img src={error} className="navError"/>
+            )}
+          </div>
+        )}
+        {postsActive && mealSearch && meals ? (
+          <div className="postsNavSearch">
+            {meals.map((meal, index) => (
+              <p
+                key={index}
+                className="postNavSearch"
+                onClick={handleHomeSearch}
+              >
+                {meal.strMeal}
+              </p>
+            ))}
+          </div>
+        ) : null}
       </div>
-      <div className="navigation" onClick={() => setSearch("")}>
+      <div className="navigation" onClick={exitNavSearch}>
         <Link to="/">
-          <h3 className="navLink">
+          <h3 className="navLink" onClick={handlePostSearch}>
             <HomeIcon />
           </h3>
         </Link>
         <Link to="/createPost">
-          <h3 className="navLink">
+          <h3 className="navLink" onClick={handleCancelSearch}>
             <ControlPointIcon />
           </h3>
         </Link>
         <Link to="/meals">
-          <h3 className="navLink">
+          <h3 className="navLink" onClick={handleMealSearch}>
             <MenuBookIcon />
           </h3>
         </Link>

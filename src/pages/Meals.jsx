@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import gif from "../assets/loading.gif";
 import Meal from "../components/Meal";
 
-function Meals({ search }) {
-  const [meals, setMeals] = useState(null);
+function Meals({ search, meals, setMeals }) {
   const [mealIndex, setMealIndex] = useState(0);
   const [searchMeals, setSearchMeals] = useState("");
   const searchURL = `https://themealdb.com/api/json/v1/1/search.php?s=${search}`;

@@ -5,8 +5,7 @@ import Post from "../components/Post";
 import gif from "../assets/loading.gif";
 import character from "/character.jpeg";
 
-function Home({ search }) {
-  const [posts, setPosts] = useState([]);
+function Home({ search, posts, setPosts }) {
   const [newest, setNewest] = useState(null);
   const [popular, setPopular] = useState(null);
   const [eventChoice, setEventChoice] = useState(null);

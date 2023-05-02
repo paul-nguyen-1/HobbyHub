@@ -112,6 +112,7 @@ function CreatePost() {
           />
         </div>
         <input
+        className="inputFile"
           placeholder="Choose file"
           type="file"
           accept="image/png, image/jpeg"

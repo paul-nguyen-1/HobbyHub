@@ -101,7 +101,7 @@ function PostCard({ created, title, image, upvote, description, url }) {
     <div className="postCard">
       <div className="card">
         <p>{elapsedTime}</p>
-        <h1>{title}</h1>
+        <h1 style={{textAlign:"center"}}>{title}</h1>
         <div className="postMain">
           <div className="postImgURL split">
             <a

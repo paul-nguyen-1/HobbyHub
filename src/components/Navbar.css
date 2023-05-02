@@ -102,3 +102,27 @@ form:focus-within {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+@media screen and (max-width: 420px) {
+  .navInput {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .navInput {
+    width: 125px;
+  }
+}
+
+@media screen and (max-width: 335px) {
+  .navInput {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 315px) {
+  .navInput {
+    width: 80px;
+  }
+}

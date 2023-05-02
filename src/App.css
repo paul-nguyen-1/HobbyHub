@@ -42,7 +42,6 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0px 100px;
 }
 
 .homeButton {
@@ -173,5 +172,198 @@ body {
 }
 
 @media screen and (max-width: 960px) {
+  .headerCard h1 {
+    font-size: 22px;
+  }
+  .headerCard p {
+    font-size: 13px;
+  }
+  .headerCard {
+    width: 420px;
+  }
+  .subscribe {
+    font-size: 18px;
+  }
+}
 
+@media screen and (max-width: 760px) {
+  .headerCard h1 {
+    font-size: 20px;
+  }
+  .headerCard p {
+    font-size: 11px;
+  }
+  .headerCard {
+    width: 350px;
+    position: relative;
+  }
+  .subscribe {
+    position: absolute;
+    top: 597.5px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 18px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 10px;
+  }
+  .headerCard {
+    width: 320px;
+    position: relative;
+  }
+
+  .subscribeCard input {
+    width: 120px;
+  }
+  .subscribeCard button {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 16px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 9px;
+  }
+
+  .headerCard {
+    width: 300px;
+  }
+
+  .subscribeCard input {
+    width: 100px;
+  }
+  .subscribeCard button {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 15px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 8px;
+  }
+
+  .headerCard {
+    width: 260px;
+  }
+
+  .subscribeCard input {
+    width: 90px;
+  }
+  .subscribeCard button {
+    width: 110px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 13px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 7px;
+  }
+
+  .headerCard {
+    width: 230px;
+  }
+  .subscribeCard input {
+    width: 90px;
+  }
+  .subscribeCard button {
+    width: 110px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .subscribeCard input {
+    margin: 0 5px;
+    height: 20px;
+    width: 70px;
+  }
+  .subscribeCard button {
+    width: 90px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .subscribeCard input {
+    height: 16px;
+    width: 60px;
+  }
+  .subscribeCard button {
+    width: 75px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .subscribeCard input {
+    margin: 0 5px;
+    height: 20px;
+    width: 70px;
+  }
+  .subscribeCard button {
+    width: 90px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 12px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 8px;
+  }
+
+  .headerCard {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .headerCard h1,
+  .userCard h1 {
+    font-size: 9px;
+  }
+  .headerCard p,
+  .userCard p {
+    font-size: 8px;
+    line-height: 16px;
+  }
+
+  .headerCard {
+    width: 150px;
+  }
+
+  .subscribeCard input {
+    margin: 2.5px;
+    height: 11px;
+    width: 55px;
+  }
+  .subscribeCard button {
+    width: 65px;
+    font-size: 10px;
+  }
 }

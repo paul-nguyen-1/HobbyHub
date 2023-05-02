@@ -102,25 +102,24 @@ function PostCard({ created, title, image, upvote, description, url }) {
       <div className="card">
         <p>{elapsedTime}</p>
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: description }}></div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {image && <img src={image} className="postCardImg" />}
-          <a
-            href={url}
-            target="_blank"
-            style={{ color: "blue", marginTop: "15px" }}
-          >
-            {url}
-          </a>
+        <div className="postMain">
+          <div className="postImgURL split">
+            <a
+              href={url}
+              target="_blank"
+              style={{ color: "blue", marginTop: "15px" }}
+            >
+              Full Recipe
+            </a>
+            {image && <img src={image} className="postCardImg" />}
+          </div>
+          <div className="instructions">
+            <h3>Instructions:</h3>
+            <div dangerouslySetInnerHTML={{ __html: description }}></div>
+          </div>
         </div>
         <div className="postUpdate">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
+          <div className="upvoteUpdate">
             <p>{count} upvotes</p>
             <p
               style={{ cursor: "pointer", marginLeft: "10px" }}
@@ -147,7 +146,7 @@ function PostCard({ created, title, image, upvote, description, url }) {
         <div className="comment">
           {postComments.map((comment, index) => (
             <div key={index} className="deleteComment">
-              <div>- {comment}</div>
+              <p>- {comment}</p>
               <button
                 style={{ backgroundColor: "transparent" }}
                 onClick={() => deleteComment(index)}

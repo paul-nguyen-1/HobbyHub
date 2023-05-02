@@ -53,7 +53,7 @@ function Home({ search, posts, setPosts }) {
           </p>
           <div className="user">
             <img src={character} />
-            <div>
+            <div className="userCard">
               <h1>Paul Nguyen</h1>
               <p>4/1/2023</p>
             </div>

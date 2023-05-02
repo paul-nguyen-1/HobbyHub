@@ -11,6 +11,7 @@
 .comment {
   padding: 10px;
   background-color: rgba(218, 218, 218, 0.596);
+  overflow: auto;
 }
 
 .deleteComment {
@@ -33,26 +34,145 @@
   justify-content: space-between;
 }
 
+.postImgURL {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postMain {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: row wrap;
+}
+
+.split {
+  width: 50%;
+}
+
+.instructions {
+  width: 50%;
+  overflow: scroll;
+}
+
 .updateDelete {
   display: flex;
   cursor: pointer;
 }
 
-.postInput{
+.postInput {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.postInput input{
+.postInput input {
   margin-right: 15px;
 }
 
-.postCardImg{
+.postCardImg {
   height: 350px;
   width: 350px;
 }
 
-.card > a{
+.card > a {
   text-decoration: underline;
   color: rgba(0, 26, 128, 0.638);
+}
+
+.upvoteUpdate {
+  display: flex;
+  font-display: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 1020px) {
+  .postMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .postImgURL {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .instructions {
+    width: 100%;
+    padding: 10px 5px;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .postCardImg {
+    height: 325px;
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .postCardImg {
+    height: 280px;
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .postCardImg {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .postCardImg {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .postCardImg {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .postCardImg {
+    height: 125px;
+    width: 125px;
+  }
+
+  .card h1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .postUpdate {
+    display: flex;
+    flex-direction: column;
+  }
+  .postImgURL a {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .postCardImg {
+    height: 125px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 335px) {
+  .card h1 {
+    font-size: 28px;
+  }
+  .postImgURL a {
+    font-size: 10px;
+  }
 }

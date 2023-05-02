@@ -30,3 +30,33 @@
   align-items: center;
   transform: translateY(-22.5px);
 }
+
+@media screen and (max-width: 960px) {
+  .post {
+    width: 22vw;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .post {
+    width: 28vw;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .post {
+    width: 32vw;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .post {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .post {
+    width: 42vw;
+  }
+}

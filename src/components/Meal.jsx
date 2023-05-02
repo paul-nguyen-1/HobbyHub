@@ -76,8 +76,8 @@ function Meal({
           >
             Full Recipe
           </a>
-          <div className="youtubeBox">
-            <ReactPlayer url={youtube} controls={true} />
+          <div>
+            <ReactPlayer url={youtube} controls={true} className="youtubeBox"/>
           </div>
         </div>
         <div className="mealInstruction">

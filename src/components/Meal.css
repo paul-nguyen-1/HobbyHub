@@ -55,3 +55,34 @@
   color: rgba(54, 225, 48, 0.835);
   border: 1px solid rgba(54, 225, 48, 0.835);
 }
+
+@media screen and (max-width: 1120px) {
+  .mealContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .youtubeBox {
+    max-height: 255px;
+    max-width: 375px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .youtubeBox {
+    max-height: 225px;
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .youtubeBox {
+    max-height: 175px;
+    max-width: 175px;
+  }
+  .meal {
+    padding: 0px;
+  }
+}

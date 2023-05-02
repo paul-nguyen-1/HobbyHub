@@ -171,3 +171,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 960px) {
+
+}

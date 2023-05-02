@@ -99,7 +99,7 @@ function Navbar({ search, setSearch, posts, meals }) {
                 </p>
               ))
             ) : (
-              <p style={{ padding: "10px" }}>No recipes found.</p>
+              <p className="postNavSearch" style={{ padding: "10px" }} onClick={exitNavSearch}>No recipes found.</p>
             )}
           </div>
         )}
